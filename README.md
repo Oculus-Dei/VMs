@@ -5,11 +5,7 @@
 
 ### Ansible
 
-* Install pip
-
-```
-https://pip.pypa.io/en/stable/installing/
-```
+* Install [pip](https://pip.pypa.io/en/stable/installing/)
 
 * Install Ansible
 
