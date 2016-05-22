@@ -20,3 +20,9 @@ pip install ansible
 ### GUI
 
 GUI takes so long to install. Will remove it in the next version.
+
+## Setup VMs
+
+```
+vagrant up --provision
+```
