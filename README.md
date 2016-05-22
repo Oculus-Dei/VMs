@@ -19,10 +19,19 @@ pip install ansible
 
 ### GUI
 
-GUI takes so long to install. Will remove it in the next version.
+GUI takes so long to install. Will remove it in the next version. To start, run
+
+```
+startx
+```
+
+after logging in.
+
 
 ## Setup VMs
 
 ```
 vagrant up --provision
 ```
+
+The default username and password are both _vagrant_.
