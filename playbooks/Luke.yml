@@ -1,0 +1,25 @@
+---
+- hosts: all
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes
+    - name: Install packages
+      apt: name={{ item }}
+      with_items:
+        - python-pip
+        - ubuntu-desktop
+    - name: Install pips
+      pip: name={{ item }}
+      with_items:
+        - pip
+    - name: Download splunk
+      get_url:
+        url=http://download.splunk.com/releases/6.4.1/splunk/linux/splunk-6.4.1-debde650d26e-linux-2.6-amd64.deb
+        dest=/tmp/splunk.deb
+        mode=744
+    - name: Install splunk
+      apt: deb=/tmp/splunk.deb
+    - name: Setup SPLUNK_HOME
+      raw: "echo 'export SPLUNK_HOME=/opt/splunk' >> /home/vagrant/.bashrc"
+    - name: Add splunk to path
+      raw: "echo 'export PATH=$PATH:$SPLUNK_HOME/bin' >> /home/vagrant/.bashrc"

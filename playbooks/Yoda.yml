@@ -1,0 +1,25 @@
+---
+- hosts: all
+  tasks:
+    - name: Add apt key
+      apt_key: url={{ item }}
+      with_items:
+        - http://ossec.wazuh.com/repos/apt/conf/ossec-key.gpg.key
+    - name: Add apt source
+      apt_repository: repo={{ item }}
+      with_items:
+        - deb http://ossec.wazuh.com/repos/apt/ubuntu trusty main
+    - name: Update apt cache
+      apt: update_cache=yes
+    - name: Install packages
+      apt: name={{ item }}
+      with_items:
+        - python-pip
+        - ossec-hids
+        # - ossec-hids-agent  # have conflict
+        - wireshark
+        - ubuntu-desktop
+    - name: Install pips
+      pip: name={{ item }}
+      with_items:
+        - pip
